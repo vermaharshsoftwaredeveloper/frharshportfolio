@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --primary-color: #ff9800; /* Vibrant Orange for accents */
+  --background-color: #0d0909; /* A very dark grey, almost black */
+  --surface-color: #1E1E1E; /* A slightly lighter grey for cards/surfaces */
+  --text-color: #E0E0E0; /* Light grey for readable text */
+  --text-color-secondary: #A0A0A0; /* Dimmer text for subheadings */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}

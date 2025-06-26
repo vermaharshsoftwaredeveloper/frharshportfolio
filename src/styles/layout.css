@@ -1,0 +1,34 @@
+.main-content {
+  display: grid;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  gap: 4rem;
+}
+
+/* Desktop-first: default to 2 columns */
+.main-content {
+  grid-template-columns: 1fr 1.5fr; /* Adjust ratio as needed */
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Tablet and smaller screens */
+@media (max-width: 1024px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+    gap: 3rem;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1.5rem 1rem;
+  }
+}
