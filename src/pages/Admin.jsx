@@ -21,32 +21,35 @@ function Admin() {
     const { logout } = useLogout();
 
     useEffect(() => {
-        const fetchProjects = async () => { 
-            const response = await fetch(`${API_URL}/projects`);
-            const data = await response.json();
-            setProjects(data);
-        };
-        const fetchResume = async () => {
+        // FIXED: This function now correctly fetches projects as well as other data.
+        const fetchAllData = async () => {
             try {
-                const response = await fetch(`${API_URL}/resume`);
-                if (response.ok) {
-                   const data = await response.json();
-                   setCurrentResumeUrl(data.url);
+                // Fetch Projects
+                const projectsResponse = await fetch(`${API_URL}/projects`);
+                const projectsData = await projectsResponse.json();
+                if (projectsResponse.ok) {
+                    setProjects(projectsData);
                 }
-            } catch (error) { console.error("Error fetching resume:", error); }
-        };
-        const fetchProfile = async () => {
-            try {
-                const response = await fetch(`${API_URL}/profile`);
-                if (response.ok) {
-                   const data = await response.json();
-                   setCurrentProfilePicUrl(data.imageUrl);
+
+                // Fetch Resume
+                const resumeResponse = await fetch(`${API_URL}/resume`);
+                if (resumeResponse.ok) {
+                   const resumeData = await resumeResponse.json();
+                   setCurrentResumeUrl(resumeData.url);
                 }
-            } catch (error) { console.error("Error fetching profile:", error); }
+
+                // Fetch Profile
+                const profileResponse = await fetch(`${API_URL}/profile`);
+                if (profileResponse.ok) {
+                   const profileData = await profileResponse.json();
+                   setCurrentProfilePicUrl(profileData.imageUrl);
+                }
+            } catch (error) {
+                console.error("Error fetching initial data:", error);
+            }
         };
-        fetchProjects();
-        fetchResume();
-        fetchProfile();
+
+        fetchAllData();
     }, []);
 
     // All handler functions remain the same
