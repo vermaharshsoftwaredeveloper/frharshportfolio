@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { API_URL, API_BASE_URL } from '../apiConfig'; // <-- IMPORT
 import '../styles/Hero.css';
 import defaultProfilePic from '../assets/profile-pic.jpg';
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 
 function Hero() {
