@@ -1,4 +1,6 @@
+// src/components/Projects.jsx
 import React, { useState, useEffect } from 'react';
+import { API_URL } from '../apiConfig'; // <-- IMPORT
 import '../styles/Projects.css';
 
 function Projects() {
@@ -10,7 +12,7 @@ function Projects() {
     const fetchProjects = async () => {
       try {
         // Your backend server is running on port 5001
-        const response = await fetch('http://localhost:5001/api/projects');
+        const response = await fetch(`${API_URL}/projects`);
         if (!response.ok) {
           throw new Error('Network response was not ok. Is the backend server running?');
         }

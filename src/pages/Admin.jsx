@@ -3,10 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
+import { API_URL } from '../apiConfig';
 import '../styles/Admin.css';
-
-// UPDATED: This line now dynamically checks for the deployment URL
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 
 function Admin() {
     const [projects, setProjects] = useState([]);
@@ -21,7 +19,6 @@ function Admin() {
     const { logout } = useLogout();
 
     useEffect(() => {
-        // FIXED: This function now correctly fetches projects as well as other data.
         const fetchAllData = async () => {
             try {
                 // Fetch Projects
@@ -52,7 +49,7 @@ function Admin() {
         fetchAllData();
     }, []);
 
-    // All handler functions remain the same
+    // All handler functions
     const handleProjectInputChange = (e) => { setProjectFormData({ ...projectFormData, [e.target.name]: e.target.value }); };
     const handleProjectSubmit = async (e) => { 
         e.preventDefault();
