@@ -1,8 +1,9 @@
 // src/components/Hero.jsx
 import React, { useState, useEffect } from 'react';
+import { API_URL, API_BASE_URL } from '../apiConfig'; // <-- IMPORT
 import '../styles/Hero.css';
 import defaultProfilePic from '../assets/profile-pic.jpg';
-import { FaLinkedin, FaGithub, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 
 
 function Hero() {
@@ -12,7 +13,7 @@ function Hero() {
   useEffect(() => {
     const fetchResume = async () => {
         try {
-            const response = await fetch('http://localhost:5001/api/resume');
+            const response = await fetch(`${API_URL}/resume`);
             if (response.ok) {
                 const data = await response.json();
                 if (data && data.url) {
@@ -24,7 +25,7 @@ function Hero() {
     const fetchProfile = async () => {
         console.log("Attempting to fetch profile...");
         try {
-            const response = await fetch('http://localhost:5001/api/profile');
+            const response = await fetch(`${API_URL}/profile`);
             console.log("Fetch response status:", response.status);
 
             if (response.ok) {

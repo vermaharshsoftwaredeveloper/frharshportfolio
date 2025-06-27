@@ -3,10 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
+import { API_URL } from '../apiConfig';
 import '../styles/Admin.css';
-
-// UPDATED: This line now dynamically checks for the deployment URL
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 
 function Admin() {
     const [projects, setProjects] = useState([]);
@@ -21,35 +19,37 @@ function Admin() {
     const { logout } = useLogout();
 
     useEffect(() => {
-        const fetchProjects = async () => { 
-            const response = await fetch(`${API_URL}/projects`);
-            const data = await response.json();
-            setProjects(data);
-        };
-        const fetchResume = async () => {
+        const fetchAllData = async () => {
             try {
-                const response = await fetch(`${API_URL}/resume`);
-                if (response.ok) {
-                   const data = await response.json();
-                   setCurrentResumeUrl(data.url);
+                // Fetch Projects
+                const projectsResponse = await fetch(`${API_URL}/projects`);
+                const projectsData = await projectsResponse.json();
+                if (projectsResponse.ok) {
+                    setProjects(projectsData);
                 }
-            } catch (error) { console.error("Error fetching resume:", error); }
-        };
-        const fetchProfile = async () => {
-            try {
-                const response = await fetch(`${API_URL}/profile`);
-                if (response.ok) {
-                   const data = await response.json();
-                   setCurrentProfilePicUrl(data.imageUrl);
+
+                // Fetch Resume
+                const resumeResponse = await fetch(`${API_URL}/resume`);
+                if (resumeResponse.ok) {
+                   const resumeData = await resumeResponse.json();
+                   setCurrentResumeUrl(resumeData.url);
                 }
-            } catch (error) { console.error("Error fetching profile:", error); }
+
+                // Fetch Profile
+                const profileResponse = await fetch(`${API_URL}/profile`);
+                if (profileResponse.ok) {
+                   const profileData = await profileResponse.json();
+                   setCurrentProfilePicUrl(profileData.imageUrl);
+                }
+            } catch (error) {
+                console.error("Error fetching initial data:", error);
+            }
         };
-        fetchProjects();
-        fetchResume();
-        fetchProfile();
+
+        fetchAllData();
     }, []);
 
-    // All handler functions remain the same
+    // All handler functions
     const handleProjectInputChange = (e) => { setProjectFormData({ ...projectFormData, [e.target.name]: e.target.value }); };
     const handleProjectSubmit = async (e) => { 
         e.preventDefault();
