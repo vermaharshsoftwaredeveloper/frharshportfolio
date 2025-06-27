@@ -16,16 +16,25 @@ function About() {
         <div className="skills-content">  
           Frontend :- 
           <div className="skills-title"> 
-            <span>HTML</span>
-            <span>CSS</span>
+            <span>HTML5</span>
+            <span>CSS3</span>
             <span>JavaScript</span>
             <span>React.js</span>
+            <span>Vue.js</span>
+            <span>Bootstrap</span>
+            <span>MaterialUI</span>
+            <span>Flexbox</span>
+            <span>CSS Grid</span>
           </div>
           <br />
           Backend :- 
           <div className="skills-title"> 
             <span>Node.js</span>
             <span>Express.js</span>
+            <span>Restful APIs</span>
+            <span>JWT Authentication</span>
+            <span>Java</span>
+            <span>Python</span>
           </div>
           <br />
           Database :- 
@@ -35,16 +44,18 @@ function About() {
             <span>PostgreSQL</span>
           </div>
           <br />
-          Tools :- 
+          Tools & Dev :- 
           <div className="skills-title">
             <span>Git</span>
             <span>GitHub</span>
             <span>VS Code</span>
             <span>Postman</span>
+            <span>Chrome DevTools</span>
           </div>
           <br />
           Cloud :- 
           <div className="skills-title">
+            <span>AWS (Basic)</span>
             <span>Vercel</span>
             <span>Render</span>
             <span>Firebase</span>
@@ -53,6 +64,10 @@ function About() {
           <br />
           Soft Skills :- 
           <div className="skills-title"> 
+            <span>Problem-Solving</span>
+            <span>Team Collaboration</span>
+            <span>Time Management</span>
+            <span>Continuous Learning</span>
             <span>Teamwork</span>
             <span>Communication</span>
             <span>Adaptability</span>
