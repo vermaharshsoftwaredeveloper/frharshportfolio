@@ -60,7 +60,7 @@ function Hero() {
         <div className="hero-header">
             <h1 className="hero-title">
                 Hello. <br />
-                I'm Harsh Verma
+                I'm Harsh
             </h1>
             <br />
             <h2 className="hero-subtitle">A passionate full-stack developer skilled in the MERN stack. I love building clean, modern web apps and solving real-world problems through code.</h2>
